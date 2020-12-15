@@ -28,6 +28,15 @@ class Individual {
     this.score = regExp.allMatches(this.geneticCode).length;
   }
 
+  Individual setGeneticCode(Individual mother, Individual father) {
+    var geneticCode = mother.geneticCode.substring(0, 10) +
+        generateRandomString(10) +
+        father.geneticCode.substring(20, 30);
+    geneticCode.split('').shuffle();
+    this.geneticCode = geneticCode;
+    return this;
+  }
+
   @override
   String toString() {
     return 'Individual(contamined: $contamined, geneticCode: $geneticCode, score: $score)';
