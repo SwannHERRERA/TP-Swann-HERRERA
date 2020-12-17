@@ -9,20 +9,22 @@ class SelectionMethod_Uniform implements SelectionMethod {
   List<Individual> getBestIndividuals(List<Individual> population) {
     List<Individual> bestIndividuals = [];
     // An individu can be select 2 times;
-    int numberOfBestIndividu;
-    if (population.length > maxBestIndividu) {
-      numberOfBestIndividu = maxBestIndividu;
-    } else {
-      numberOfBestIndividu = (population.length / 2).floor();
-    }
+    int numberOfBestIndividu = _selectNumberOfBestIndividu(population);
     for (int i = 0; i < numberOfBestIndividu; i += 1) {
-      bestIndividuals.add(pickRandomIndividu(population));
+      bestIndividuals.add(_pickRandomIndividu(population));
     }
 
     return population;
   }
 
-  Individual pickRandomIndividu(List<Individual> population) {
+  int _selectNumberOfBestIndividu(List<Individual> population) {
+    if (population.length > maxBestIndividu) {
+      return maxBestIndividu;
+    }
+    return (population.length / 2).floor();
+  }
+
+  Individual _pickRandomIndividu(List<Individual> population) {
     var max = population.length - 1;
     if (max < 0) {
       max = 0;

@@ -8,12 +8,6 @@ import 'helper.dart';
 class Population {
   List<Individual> individuals = [];
 
-  void mutation() {
-    for (int i = 0; i < individuals.length; i += 1) {
-      individuals[i].evolveGeneticCode();
-    }
-  }
-
   Population() {
     var numberOfIndividu = Random().nextInt(maxInitialMaxNumberOfIndividu);
     List<Individual> individuals = [];
@@ -22,7 +16,13 @@ class Population {
     }
     this.individuals = individuals;
 
-    addCondamined();
+    _addCondamined();
+  }
+
+  void mutation() {
+    for (int i = 0; i < individuals.length; i += 1) {
+      individuals[i].evolveGeneticCode();
+    }
   }
 
   void reproduction(SelectionMethod selectionMethod) {
@@ -53,14 +53,14 @@ class Population {
 
   int diffuseVirus(int nbInfected) {
     for (int i = 0; i < individuals.length; i += 1) {
-      if (diffuseVirusByIndividu(individuals[i])) {
+      if (_diffuseVirusByIndividu(individuals[i])) {
         nbInfected += 1;
       }
     }
     return nbInfected;
   }
 
-  bool diffuseVirusByIndividu(Individual individual) {
+  bool _diffuseVirusByIndividu(Individual individual) {
     if (individual.contamined) {
       individual.contaminatedSince += 1;
       return false;
@@ -73,7 +73,7 @@ class Population {
     return false;
   }
 
-  void addCondamined() {
+  void _addCondamined() {
     var maxInt = individuals.length - 1;
     if (maxInt < 0) {
       maxInt = 0;

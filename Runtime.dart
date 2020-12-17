@@ -12,23 +12,29 @@ class Runtime {
 
   Runtime() {
     while (nbInfected > 0 && population.individuals.isNotEmpty) {
-      newDay();
+      _newDay();
     }
-    printResult(population, dayCounter);
+    _printResult(population, dayCounter);
   }
 
-  void newDay() {
+  void _newDay() {
     dayCounter += 1;
-    print("Jour N° " + dayCounter.toString());
-    print("Nombre d'infecté " + nbInfected.toString());
-    print("Taille de la population: " + population.getSize().toString());
+    _printDailyReport();
     nbInfected = population.diffuseVirus(nbInfected);
     population.reproduction(selectionMethod);
     population.mutation();
     nbInfected = population.killContamined(nbInfected);
   }
 
-  void printResult(Population population, int dayCounter) {
+  void _printDailyReport() {
+    print(""" 
+    Jour N°$dayCounter
+    Nombre d'infecté $nbInfected
+    Taille de la population: $population.getSize()
+    """);
+  }
+
+  void _printResult(Population population, int dayCounter) {
     print(population.toString());
     print("La projection a durée $dayCounter jour(s)");
   }

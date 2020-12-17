@@ -6,13 +6,13 @@ class SelectionMethod_Rank implements SelectionMethod {
   @override
   List<Individual> getBestIndividuals(List<Individual> population) {
     List<Individual> bestIndividu = [];
-    for (int i = 0; i < population.length; i += 1) {
-      if (bestIndividu.length > maxBestIndividu) {
-        break;
-      }
+
+    int i = 0;
+    while (bestIndividu.length < maxBestIndividu && i < population.length) {
       if (isGoodIndividual(population[i])) {
         bestIndividu.add(population[i]);
       }
+      i += 1;
     }
     return bestIndividu;
   }
