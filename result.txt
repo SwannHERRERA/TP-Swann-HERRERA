@@ -1,14 +1,3 @@
-# Virus et immunité
-
-## Le code generique 
-
-Le code generique est une chaine de caractère aléatoire.
-
-Le score est calculé depuis le nombre de caractère alphabetique du code génétique
-
-## Exemple d'éxecution (paramétrer pour que l'experiance soit courte)
-
-```
     Jour N°1
     Nombre d'infecté 1
     Taille de la population: 28
@@ -117,4 +106,3 @@ Individual(contamined: false, geneticCode: YZkaq`\estksxcZig[yq`aj^`ut]uj, score
 Individual(contamined: false, geneticCode: c\Ya^q^ua[svdepwg_jY`aj^`ut]uj, score: 8)
 Individual(contamined: false, geneticCode: c\Ya^q^ua[pl[]eo`rqe`aj^`ut]uj, score: 10)
 La projection a durée 12 jour(s)
-```
