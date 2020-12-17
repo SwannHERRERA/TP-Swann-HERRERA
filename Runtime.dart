@@ -30,7 +30,7 @@ class Runtime {
     print(""" 
     Jour N°$dayCounter
     Nombre d'infecté $nbInfected
-    Taille de la population: $population.getSize()
+    Taille de la population: ${population.getSize()}
     """);
   }
 
